@@ -1,0 +1,41 @@
+/* App.css */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+@import 'tailwindcss/utilities';
+
+/* Add your custom styles and components below */
+
+
+/* App.css */
+#background {
+  background-image: url("https://www.acquabella.com/wp-content/uploads/2019/10/TEXTURA-QUIZ.jpg");
+  background-size: cover;
+  background-position: center;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  transform: scaleX(-1);
+}
+
+a, p, ul {
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
+}
+
+a:hover, button {
+  color:rgb(92, 253, 253);
+}
+
+h1, h2 {
+  text-shadow: 2px 4px 4px rgba(0, 0, 0, 1);
+}
+
+.link-animation {
+  transition: transform 0.3s ease;
+}
+
+.link-animation:hover {
+  transform: translateY(-3px);
+}
