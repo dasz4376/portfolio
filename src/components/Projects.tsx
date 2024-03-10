@@ -43,6 +43,10 @@ const Projects: React.FC = () => {
               </div>
             </div>
           </div>
+          <div>
+            <p className='text-center font-bold'>View the repository for this Website Portfolio!</p>
+            <a href="https://github.com/dasz4376/portfolio" target="_blank" className="inline-block py-2 px-4 bg-gray-900 text-white font-bold text-md rounded-lg mx-2 my-2 hover:bg-blue-700 hover:text-white link-animation">View Repository</a>
+          </div>
         </div>
       </div>
     </section>
