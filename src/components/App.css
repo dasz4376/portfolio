@@ -9,33 +9,168 @@
 /* App.css */
 #background {
   background-image: url("https://www.acquabella.com/wp-content/uploads/2019/10/TEXTURA-QUIZ.jpg");
-  background-size: cover;
-  background-position: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
+  z-index: -2;
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+}
+
+#background::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(17, 24, 39, 0.473) 90%, rgba(69, 3, 95, 0.301) 100%);
   z-index: -1;
-  transform: scaleX(-1);
 }
 
 a, p, ul {
-  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.9);
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
 }
 
-a:hover, button {
-  color:rgb(92, 253, 253);
+a:hover, button:hover {
+  color: #5cfdfd;
+  transform: translateY(-2px);
+  transition: all 0.3s ease;
 }
 
 h1, h2 {
-  text-shadow: 2px 4px 4px rgba(0, 0, 0, 1);
+  text-shadow: 2px 4px 6px rgba(0, 0, 0, 0.8);
 }
 
 .link-animation {
-  transition: transform 0.3s ease;
+  transition: all 0.3s ease;
+  position: relative;
 }
 
-.link-animation:hover {
-  transform: translateY(-3px);
+.link-animation::after {
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 2px;
+  bottom: -2px;
+  left: 0;
+  background-color: #5cfdfd;
+  transition: width 0.3s ease;
+}
+
+.link-animation:hover::after {
+  width: 100%;
+}
+
+.project-tile, .about-me, .connections {
+  backdrop-filter: blur(16px);
+  background: linear-gradient(145deg, rgba(31, 41, 55, 0.9), rgba(55, 65, 81, 0.8));
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+}
+
+.project-tile:hover, .about-me:hover, .connections:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.button-primary {
+  padding: 1.5rem 0.75rem;
+  border-radius: 0.5rem;
+  font-weight: 700;
+  color: white;
+  transition-property: all;
+  transition-duration: 300ms;
+  background: linear-gradient(135deg, #7367f0 0%, #4c5da8 100%);
+  box-shadow: 0 4px 15px rgba(115, 103, 240, 0.3);
+}
+
+.button-primary:hover {
+  background: linear-gradient(135deg, #8377f1 0%, #5c6db8 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(115, 103, 240, 0.4);
+}
+
+.nav-link {
+  position: relative;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  color: white;
+  font-weight: bold;
+  transition-property: all;
+  transition-duration: 300ms;
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: #7367f0;
+  transition: width 0.3s ease;
+}
+
+.nav-link:hover::after {
+  width: 100%;
+}
+
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(31, 41, 55, 0.5);
+}
+
+::-webkit-scrollbar-thumb {
+  background: #7367f0;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #8377f1;
+}
+
+.project-container {
+  display: grid;
+  gap: 2rem;
+  padding: 1.5rem;
+}
+
+#footer {
+  backdrop-filter: blur(12px);
+  background: rgba(31, 41, 55, 0.95);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.name-title {
+  color: white !important;
+  font-weight: 800;
+  font-size: 3.5rem;
+  text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.5);
+  background: none !important;
+  -webkit-text-fill-color: white !important;
+}
+
+.role-title {
+  color: #60a5fa;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-top: 0.5rem;
+}
+
+.sub-title {
+  color: #e2e8f0;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 0.25rem;
 }

@@ -2,14 +2,12 @@
 module.exports = {
   mode: 'jit',
   purge: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
-  darkMode: false, // or 'media' or 'class'
+  darkMode: false,
   theme: {
     extend: {
       colors: {
         customTextColorHome: 'rgb(141, 180, 252)',
         customHoverColor: 'rgb(92, 253, 253)',
-        transparent: "transparent",
-        current: "currentColor",
         primary: "#7367f0",
         secondary: "#4c5da8",
         purple: "#9867f0",
@@ -17,14 +15,42 @@ module.exports = {
         dark: "#4899a8",
         bg: "#242e42",
         fore: "#2f3b52",
-        success: "#28c76f",
-        danger: "#ea5455",
-        warning: "#ff9f43",
       },
-    }
+      animation: {
+        fadeIn: 'fadeIn 1s ease-in',
+        slideDown: 'slideDown 1s ease-out',
+        slideUp: 'slideUp 1s ease-out',
+        expand: 'expand 1.5s ease-out',
+      },
+      keyframes: {
+        fadeIn: {
+          '0%': { opacity: '0' },
+          '100%': { opacity: '1' },
+        },
+        slideDown: {
+          '0%': { transform: 'translateY(-20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        slideUp: {
+          '0%': { transform: 'translateY(20px)', opacity: '0' },
+          '100%': { transform: 'translateY(0)', opacity: '1' },
+        },
+        expand: {
+          '0%': { width: '0' },
+          '100%': { width: '12rem' },
+        },
+      },
+      boxShadow: {
+        'glow': '0 0 15px rgba(115, 103, 240, 0.5)',
+      },
     },
+  },
   variants: {
-    extend: {},
+    extend: {
+      transform: ['hover', 'focus'],
+      scale: ['hover', 'focus'],
+      translate: ['hover', 'focus'],
+    },
   },
   plugins: [],
 }

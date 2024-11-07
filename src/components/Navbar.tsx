@@ -58,31 +58,63 @@ const Navbar: React.FC = () => {
   };
 
   return (
-    <nav className="bg-gray-800 bg-opacity-90 p-4 fixed w-full z-10" style={{ boxShadow: '0 2px 4px rgba(0, 0, 0, 1)' }}>
-      <div className="pl-6 max-w-full container flex justify-between items-center">
-        <Link to="/home" className="text-white text-lg font-bold">Home</Link>
-        <div className="flex items-center pr-4">
-          <div className="hidden md:flex"> {/* Hide on small screens */}
-            <Link to="/about" className="text-white text-lg mx-4 font-bold">About</Link>
-            <Link to="/projects" className="text-white text-lg mx-4 font-bold">Projects</Link>
-            <Link to="/connections" className="text-white text-lg mx-4 font-bold">Connections</Link>
+    <nav className="fixed w-full z-50 backdrop-blur-lg bg-gray-900/90 border-b border-gray-800/50">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="flex justify-between h-16 items-center">
+          <Link 
+            to="/home" 
+            className="text-xl font-bold text-white hover:text-primary transition-colors duration-300"
+          >
+            MD
+          </Link>
+          
+          <div className="hidden md:flex items-center space-x-8">
+            <Link to="/about" className="nav-link">About</Link>
+            <Link to="/projects" className="nav-link">Projects</Link>
           </div>
-          <div className="md:hidden"> {/* Show on small screens */}
-            <button onClick={handleButtonClick} onMouseEnter={handleButtonMouseEnter} onMouseLeave={handleButtonMouseLeave} className="text-white text-xl mx-4 font-bold hover:text-customHoverColor">&#9776;</button>
+
+          <div className="md:hidden">
+            <button
+              onClick={handleButtonClick}
+              className="text-white p-2 rounded-lg hover:bg-gray-800/50 transition-colors duration-300"
+            >
+              <svg className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              </svg>
+            </button>
           </div>
         </div>
       </div>
-      {/* Menu */}
+
+      {/* Mobile menu */}
       {isMenuOpen && (
         <div
           ref={menuRef}
-          className="absolute top-16 right-4 bg-gray-800 text-white p-2 rounded shadow-md"
+          className="absolute top-16 right-0 w-48 py-2 mt-2 bg-gray-900/95 backdrop-blur-lg rounded-lg shadow-xl border border-gray-800/50"
           onMouseEnter={handleMenuMouseEnter}
           onMouseLeave={handleMenuMouseLeave}
         >
-          <Link to="/about" className="block text-lg py-1 px-4 hover:text-customHoverColor" onClick={closeMenu}>About</Link>
-          <Link to="/projects" className="block text-lg py-1 px-4 hover:text-customHoverColor" onClick={closeMenu}>Projects</Link>
-          <Link to="/connections" className="block text-lg py-1 px-4 hover:text-customHoverColor" onClick={closeMenu}>Connections</Link>
+          <Link 
+            to="/about" 
+            className="block px-4 py-2 text-sm text-white hover:bg-primary/20 transition-colors duration-300"
+            onClick={closeMenu}
+          >
+            About
+          </Link>
+          <Link 
+            to="/projects" 
+            className="block px-4 py-2 text-sm text-white hover:bg-primary/20 transition-colors duration-300"
+            onClick={closeMenu}
+          >
+            Projects
+          </Link>
+          <Link 
+            to="/connections" 
+            className="block px-4 py-2 text-sm text-white hover:bg-primary/20 transition-colors duration-300"
+            onClick={closeMenu}
+          >
+            Connections
+          </Link>
         </div>
       )}
     </nav>
