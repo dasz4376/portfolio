@@ -66,10 +66,10 @@ const Home: React.FC = () => {
   }, []);
 
   const stats = [
-    { number: '5+', label: 'Years in Tech' },
+    { number: '4+', label: 'Years in Tech' },
     { number: '20+', label: 'Projects Completed' },
     { number: '10+', label: 'Technologies Mastered' },
-    { number: '3+', label: 'Industries Served' }
+    { number: '2+', label: 'Industries Served' }
   ];
 
   return (
@@ -80,12 +80,12 @@ const Home: React.FC = () => {
         initial={{ opacity: 0 }}
         animate={{ opacity: inView ? 1 : 0 }}
         transition={{ duration: 0.8 }}
-        className="min-h-screen flex flex-col items-center justify-center px-4 space-y-16"
+        className="min-h-screen flex flex-col items-center justify-center px-4 space-y-16 pt-20 md:pt-0"
       >
         <div className="text-center max-w-4xl mx-auto">
           <div className="space-y-8 animate-fadeIn">
             <motion.h1 
-              className="text-5xl md:text-7xl font-bold animate-slideDown tracking-tight"
+              className="text-4xl md:text-7xl font-bold animate-slideDown tracking-tight"
               initial={{ y: -50, opacity: 0 }}
               animate={{ y: 0, opacity: 1 }}
               transition={{ duration: 0.8 }}
