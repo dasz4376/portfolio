@@ -3,10 +3,34 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import tunermenucamber from './tuner-menu-camber.png';
 import paragonPreview from '../assets/paragon-preview.png';
+import { motion } from 'framer-motion';
 
 const Projects: React.FC = () => {
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    visible: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.3
+      }
+    }
+  };
+
+  const itemVariants = {
+    hidden: { y: 20, opacity: 0 },
+    visible: {
+      y: 0,
+      opacity: 1
+    }
+  };
+
   return (
-    <section className="min-h-screen flex justify-center items-center px-4 py-20">
+    <motion.section
+      initial="hidden"
+      animate="visible"
+      variants={containerVariants}
+      className="min-h-screen flex justify-center items-center px-4 py-20"
+    >
       <div className="max-w-6xl w-full">
         <div className="bg-[#1f2937] p-8 rounded-lg text-white shadow-xl">
           {/* Header */}
@@ -24,7 +48,7 @@ const Projects: React.FC = () => {
           {/* Projects Grid */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
             {/* Paragon Wellness Project */}
-            <div className="bg-[#2d3748] p-6 rounded-lg shadow-lg transition-transform duration-300 hover:-translate-y-1">
+            <motion.div variants={itemVariants} className="bg-[#2d3748] p-6 rounded-lg hover-card">
               <div className="flex justify-center mb-6">
                 <img 
                   src={paragonPreview}
@@ -41,10 +65,10 @@ const Projects: React.FC = () => {
                   View Project
                 </Link>
               </div>
-            </div>
+            </motion.div>
 
             {/* FiveM Project */}
-            <div className="bg-[#2d3748] p-6 rounded-lg shadow-lg transition-transform duration-300 hover:-translate-y-1">
+            <motion.div variants={itemVariants} className="bg-[#2d3748] p-6 rounded-lg hover-card">
               <div className="flex justify-center mb-6">
                 <img 
                   src={tunermenucamber} 
@@ -62,7 +86,7 @@ const Projects: React.FC = () => {
                   View Project
                 </Link>
               </div>
-            </div>
+            </motion.div>
           </div>
 
           {/* Portfolio Repository Link */}
@@ -81,7 +105,7 @@ const Projects: React.FC = () => {
           </div>
         </div>
       </div>
-    </section>
+    </motion.section>
   );
 }
 
