@@ -20,8 +20,8 @@ const Footer: React.FC = () => {
   ];
 
   return (
-    <footer id="footer" className="w-full dark:text-white text-gray-800 bg-gray-100 dark:bg-transparent">
-      <div className="max-w-7xl mx-auto px-4 py-8">
+    <footer className="w-full py-12 px-4 bg-gray-900/95 backdrop-blur-xl border-t border-gray-800">
+      <div className="max-w-6xl mx-auto space-y-8">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {/* Brand Section */}
           <div className="space-y-4">
@@ -33,7 +33,7 @@ const Footer: React.FC = () => {
                 MD
               </motion.span>
             </Link>
-            <p className="text-sm dark:text-gray-300 text-gray-600">
+            <p className="text-sm text-gray-300">
               Building innovative solutions across multiple industries with a focus on modern technologies
               and exceptional user experiences.
             </p>
@@ -41,13 +41,13 @@ const Footer: React.FC = () => {
 
           {/* Quick Links */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Quick Links</h3>
+            <h3 className="text-lg font-semibold text-white">Quick Links</h3>
             <ul className="space-y-2">
               {quickLinks.map((link, index) => (
                 <li key={index}>
                   <Link 
                     to={link.path}
-                    className="dark:text-gray-300 text-gray-600 hover:text-primary transition-colors duration-300 flex items-center space-x-2"
+                    className="text-gray-300 hover:text-primary transition-colors duration-300 flex items-center space-x-2"
                   >
                     <i className="fas fa-chevron-right text-xs"></i>
                     <span>{link.text}</span>
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
 
           {/* Contact & Social */}
           <div className="space-y-4">
-            <h3 className="text-lg font-semibold">Connect</h3>
+            <h3 className="text-lg font-semibold text-white">Connect</h3>
             <div className="flex space-x-4">
               {socialLinks.map((link, index) => (
                 <motion.a
@@ -67,7 +67,7 @@ const Footer: React.FC = () => {
                   href={link.url}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="social-icon w-10 h-10 rounded-full dark:bg-gray-700 bg-gray-200 flex items-center justify-center hover:bg-primary transition-all duration-300"
+                  className="w-10 h-10 rounded-full bg-gray-800 flex items-center justify-center text-gray-300 hover:bg-primary hover:text-white transition-all duration-300"
                   whileHover={{ y: -3 }}
                   aria-label={link.label}
                 >
@@ -75,12 +75,12 @@ const Footer: React.FC = () => {
                 </motion.a>
               ))}
             </div>
-            <div className="text-sm dark:text-gray-300 text-gray-600">
-              <p className="flex items-center space-x-2">
+            <div className="text-sm space-y-2">
+              <p className="flex items-center space-x-2 text-gray-300">
                 <i className="fas fa-envelope text-primary"></i>
                 <span>mattdarabasz@gmail.com</span>
               </p>
-              <p className="flex items-center space-x-2">
+              <p className="flex items-center space-x-2 text-gray-300">
                 <i className="fas fa-phone text-primary"></i>
                 <span>(215) 303-7737</span>
               </p>
@@ -89,22 +89,22 @@ const Footer: React.FC = () => {
         </div>
 
         {/* Bottom Bar */}
-        <div className="mt-8 pt-8 border-t dark:border-gray-700 border-gray-200">
+        <div className="pt-8 mt-8 border-t border-gray-800">
           <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
-            <p className="text-sm dark:text-gray-300 text-gray-600">
+            <p className="text-sm text-gray-300">
               &copy; {currentYear} Matthew Darabasz. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm dark:text-gray-300 text-gray-600">
+            <div className="flex space-x-6 text-sm">
               <motion.a 
                 href="#" 
-                className="hover:text-primary transition-colors duration-300"
+                className="text-gray-300 hover:text-primary transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
               >
                 Privacy Policy
               </motion.a>
               <motion.a 
                 href="#" 
-                className="hover:text-primary transition-colors duration-300"
+                className="text-gray-300 hover:text-primary transition-colors duration-300"
                 whileHover={{ scale: 1.05 }}
               >
                 Terms of Service

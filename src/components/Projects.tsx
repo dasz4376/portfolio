@@ -11,16 +11,18 @@ const Projects: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.3
+        duration: 0.4
       }
     }
   };
 
   const itemVariants = {
-    hidden: { y: 20, opacity: 0 },
+    hidden: { opacity: 0 },
     visible: {
-      y: 0,
-      opacity: 1
+      opacity: 1,
+      transition: {
+        duration: 0.3
+      }
     }
   };
 
@@ -29,81 +31,101 @@ const Projects: React.FC = () => {
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="min-h-screen flex justify-center items-center px-4 py-20"
+      className="min-h-screen pt-24 pb-12 px-4 bg-transparent"
     >
-      <div className="max-w-6xl w-full">
-        <div className="bg-[#1f2937] p-8 rounded-lg text-white shadow-xl">
-          {/* Header */}
-          <h2 className="text-4xl font-bold mb-4"
-              style={{ 
-                textShadow: '2px 2px 4px rgba(0, 0, 0, 0.5)'
-              }}>
-            Projects
+      <div className="max-w-6xl mx-auto">
+        {/* Header Section */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          className="text-center mb-16"
+        >
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+            Featured Projects
           </h2>
-          
-          <p className='text-gray-300 mb-8'>
-            Click the "View Project" buttons below to see full project details
+          <p className="text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+            Explore my portfolio of web applications and development projects
           </p>
+        </motion.div>
 
-          {/* Projects Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-            {/* Paragon Wellness Project */}
-            <motion.div variants={itemVariants} className="bg-[#2d3748] p-6 rounded-lg hover-card">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
+          {/* Paragon Website Project */}
+          <motion.div 
+            variants={itemVariants} 
+            className="group glass-effect p-6 rounded-xl hover:bg-primary/5 transition-all duration-300"
+          >
+            <Link to="/project2" className="block">
               <div className="flex justify-center mb-6">
-                <img 
-                  src={paragonPreview}
-                  alt="Paragon Wellness Website" 
-                  className="rounded-lg shadow-md object-cover w-full h-64" 
-                />
+                <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/30 z-10"></div>
+                  <img 
+                    src={paragonPreview}
+                    alt="Paragon Website" 
+                    className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]" 
+                  />
+                </div>
               </div>
               <div className="text-center">
-                <h3 className="text-xl font-bold mb-3">Paragon Wellness Center Website</h3>
-                <Link 
-                  to='/paragon-project' 
-                  className="inline-block px-6 py-3 bg-[#6c63ff] text-white font-semibold rounded-md hover:bg-[#5b54d6] transition-colors duration-300"
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Paragon Website</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4 text-base">A modern, responsive website built with React and TypeScript</p>
+                <span 
+                  className="inline-block px-6 py-3 bg-primary/80 text-white font-medium rounded-lg hover:bg-primary transition-all duration-300"
                 >
                   View Project
-                </Link>
+                </span>
               </div>
-            </motion.div>
+            </Link>
+          </motion.div>
 
-            {/* FiveM Project */}
-            <motion.div variants={itemVariants} className="bg-[#2d3748] p-6 rounded-lg hover-card">
+          {/* FiveM Project */}
+          <motion.div 
+            variants={itemVariants} 
+            className="group glass-effect p-6 rounded-xl hover:bg-primary/5 transition-all duration-300"
+          >
+            <Link to="/project1" className="block">
               <div className="flex justify-center mb-6">
-                <img 
-                  src={tunermenucamber} 
-                  alt="FiveM Project" 
-                  className="rounded-lg shadow-md" 
-                  style={{ width: '190px', height: '380px' }}
-                />
+                <div className="relative w-full h-64 rounded-lg overflow-hidden">
+                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/30 z-10"></div>
+                  <img 
+                    src={tunermenucamber}
+                    alt="FiveM Project" 
+                    className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]" 
+                  />
+                </div>
               </div>
               <div className="text-center">
-                <h3 className="text-xl font-bold mb-3">FiveM Vehicle Tuning Interface</h3>
-                <Link 
-                  to='/project1' 
-                  className="inline-block px-6 py-3 bg-[#6c63ff] text-white font-semibold rounded-md hover:bg-[#5b54d6] transition-colors duration-300"
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">FiveM Vehicle Tuning</h3>
+                <p className="text-gray-700 dark:text-gray-300 mb-4 text-base">A custom UI for vehicle tuning in FiveM servers</p>
+                <span 
+                  className="inline-block px-6 py-3 bg-primary/80 text-white font-medium rounded-lg hover:bg-primary transition-all duration-300"
                 >
                   View Project
-                </Link>
+                </span>
               </div>
-            </motion.div>
-          </div>
-
-          {/* Portfolio Repository Link */}
-          <div className="text-center border-t border-gray-600 pt-8">
-            <p className='font-semibold mb-4'>
-              View the repository for this Website Portfolio
-            </p>
-            <a 
-              href="https://github.com/dasz4376/portfolio" 
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-block px-6 py-3 bg-[#6c63ff] text-white font-semibold rounded-md hover:bg-[#5b54d6] transition-colors duration-300"
-            >
-              View Repository
-            </a>
-          </div>
+            </Link>
+          </motion.div>
         </div>
+
+        {/* Portfolio Repository Link */}
+        <motion.div 
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 0.3 }}
+          className="text-center border-t border-slate-700/20 pt-8"
+        >
+          <p className="text-gray-700 dark:text-gray-300 font-medium mb-4">
+            View the repository for this Website Portfolio
+          </p>
+          <a 
+            href="https://github.com/dasz4376/portfolio" 
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-block px-6 py-3 bg-primary/80 text-white font-medium rounded-lg hover:bg-primary transition-all duration-300"
+          >
+            View Repository
+          </a>
+        </motion.div>
       </div>
     </motion.section>
   );

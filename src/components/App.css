@@ -5,8 +5,6 @@
 
 /* Add your custom styles and components below */
 
-
-/* App.css */
 #background {
   background-image: url("https://www.acquabella.com/wp-content/uploads/2019/10/TEXTURA-QUIZ.jpg");
   position: fixed;
@@ -27,7 +25,7 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(17, 24, 39, 0.473) 90%, rgba(69, 3, 95, 0.301) 100%);
+  background: linear-gradient(135deg, rgba(23, 32, 52, 0.85) 0%, rgba(35, 45, 65, 0.9) 100%);
   z-index: -1;
 }
 
@@ -66,11 +64,11 @@ h1, h2 {
 }
 
 .project-tile, .about-me, .connections {
-  backdrop-filter: blur(16px);
-  background: linear-gradient(145deg, rgba(31, 41, 55, 0.9), rgba(55, 65, 81, 0.8));
+  backdrop-filter: blur(12px);
+  background: linear-gradient(145deg, rgba(30, 41, 59, 0.75), rgba(44, 55, 75, 0.7));
   border: 1px solid rgba(255, 255, 255, 0.1);
   transition: all 0.3s ease;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
   position: relative;
   overflow: hidden;
 }
@@ -151,7 +149,7 @@ h1, h2 {
 }
 
 ::-webkit-scrollbar-track {
-  background: rgba(31, 41, 55, 0.8);
+  background: rgba(30, 41, 59, 0.65);
   border-radius: 5px;
 }
 
@@ -257,312 +255,91 @@ h1, h2 {
   animation: float 5s ease-in-out infinite;
 }
 
-.hover-card:hover {
-  transform: translateY(-10px) scale(1.02);
-  box-shadow: 0 10px 30px rgba(115, 103, 240, 0.4);
-  border: 1px solid rgba(115, 103, 240, 0.5);
-  animation: borderGlow 2s ease-in-out infinite;
-}
-
-/* Loading animation */
-.loading-spinner {
-  width: 50px;
-  height: 50px;
-  border: 3px solid rgba(115, 103, 240, 0.3);
-  border-radius: 50%;
-  border-top-color: #7367f0;
-  animation: spin 1s ease-in-out infinite;
-}
-
-@keyframes spin {
-  to { transform: rotate(360deg); }
-}
-
-/* Glassmorphism effect */
+/* Glass effect */
 .glass-effect {
-  background: rgba(31, 41, 55, 0.2);
-  backdrop-filter: blur(8px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  box-shadow: 0 8px 32px 0 rgba(31, 41, 55, 0.37);
+  background: rgba(17, 25, 40, 0.75);
+  backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.125);
+  transition: all 0.3s ease-in-out;
 }
 
-/* Gradient borders */
+.hover-shadow-glow:hover {
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.4);
+}
+
+.social-link {
+  @apply text-white/80 hover:text-primary transition-all duration-300 hover:scale-110 transform hover:-translate-y-1;
+  position: relative;
+}
+
+.social-link::after {
+  content: '';
+  position: absolute;
+  width: 100%;
+  height: 2px;
+  bottom: -4px;
+  left: 0;
+  background: linear-gradient(to right, var(--primary-color), var(--info-color));
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease-in-out;
+}
+
+.social-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
 .gradient-border {
   position: relative;
-  background: linear-gradient(to right, #7367f0, #67dbf0);
-  padding: 3px;
+  background: linear-gradient(to right, var(--primary-color), var(--info-color));
+  padding: 1px;
   border-radius: 0.5rem;
 }
 
-.gradient-border::after {
-  content: '';
-  position: absolute;
-  inset: 1px;
-  background: #1f2937;
-  border-radius: 0.4rem;
-  z-index: -1;
+.gradient-border > * {
+  background: rgb(17, 25, 40);
+  border-radius: inherit;
 }
 
-/* Animated background gradient */
-.animated-gradient {
-  background: linear-gradient(
-    270deg,
-    #7367f0,
-    #67dbf0,
-    #5cfdfd,
-    #67dbf0,
-    #7367f0
-  );
-  background-size: 400% 400%;
-  animation: gradient 15s ease infinite;
+@keyframes float {
+  0% {
+    transform: translateY(0px);
+  }
+  50% {
+    transform: translateY(-10px);
+  }
+  100% {
+    transform: translateY(0px);
+  }
 }
 
-@keyframes gradient {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
+.animate-float {
+  animation: float 3s ease-in-out infinite;
 }
 
-/* Shimmer effect */
-.shimmer {
-  background: linear-gradient(
-    90deg,
-    transparent,
-    rgba(255, 255, 255, 0.1),
-    transparent
-  );
-  background-size: 200% 100%;
-  animation: shimmer 2s infinite;
+.hover-card {
+  transition: all 0.3s ease-in-out;
 }
 
-@keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+.hover-card:hover {
+  transform: translateY(-10px);
+  box-shadow: 0 10px 30px -15px rgba(99, 102, 241, 0.4);
 }
 
-/* Typing cursor animation */
-@keyframes blink {
-  0%, 100% { opacity: 1; }
-  50% { opacity: 0; }
+.text-gradient {
+  background: linear-gradient(to right, var(--primary-color), var(--info-color));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
 }
 
-.cursor-blink {
-  animation: blink 1s step-end infinite;
+/* Smooth scrolling for the entire page */
+html {
+  scroll-behavior: smooth;
 }
 
-/* Button hover effect */
-.hover-slide::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: -100%;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(
-    120deg,
-    transparent,
-    rgba(255, 255, 255, 0.2),
-    transparent
-  );
-  transition: 0.5s;
-}
-
-.hover-slide:hover::before {
-  left: 100%;
-}
-
-/* Stats card effect */
-.stats-card {
-  backdrop-filter: blur(8px);
-  background: rgba(31, 41, 55, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  transition: all 0.3s ease;
-}
-
-.stats-card:hover {
-  transform: translateY(-5px);
-  background: rgba(31, 41, 55, 0.3);
-  border-color: rgba(115, 103, 240, 0.5);
-}
-
-/* Enhanced social icons */
-.social-icon {
-  position: relative;
-  overflow: hidden;
-}
-
-.social-icon::after {
-  content: '';
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 0;
-  height: 0;
-  background: rgba(115, 103, 240, 0.2);
-  border-radius: 50%;
-  transform: translate(-50%, -50%);
-  transition: width 0.3s, height 0.3s;
-}
-
-.social-icon:hover::after {
-  width: 150%;
-  height: 150%;
-}
-
-/* Dark mode transitions */
-* {
-  transition: background-color 0.3s ease, color 0.3s ease;
-}
-
-/* Dark mode background */
-.dark #background::after {
-  background: linear-gradient(135deg, rgba(17, 24, 39, 0.8) 90%, rgba(69, 3, 95, 0.6) 100%);
-}
-
-/* Dark mode text colors */
-.dark .text-gray-300 {
-  color: #D1D5DB;
-}
-
-.dark .bg-gray-900\/95 {
-  background-color: rgba(17, 24, 39, 0.95);
-}
-
-/* Light mode styles */
-:root:not(.dark) {
-  /* Background overlay - make it lighter and more subtle */
-  #background::after {
-    background: linear-gradient(135deg, rgba(255, 255, 255, 0.95) 90%, rgba(230, 230, 250, 0.9) 100%);
-  }
-
-  /* Card and container backgrounds */
-  .glass-effect, .about-me, .project-tile, .connections {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-  }
-
-  /* Text colors */
-  .text-white, .text-gray-300 {
-    color: #1f2937;
-  }
-
-  /* Headings */
-  h1.name-title {
-    color: #1f2937 !important;
-  }
-
-  /* Role titles and gradient text */
-  .gradient-text, .role-title {
-    background: linear-gradient(45deg, #4c5da8, #7367f0);
-    -webkit-background-clip: text;
-    background-clip: text;
-    color: transparent;
-  }
-
-  /* Stats cards */
-  .stats-card {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-    color: #1f2937;
-  }
-
-  /* Projects section */
-  .bg-\[\#1f2937\] {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  .bg-\[\#2d3748\] {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  /* Professional summary and experience sections */
-  .bg-gray-900\/50, .bg-gray-800\/50, .bg-gray-700\/50 {
-    background: rgba(255, 255, 255, 0.95);
-    border: 1px solid rgba(0, 0, 0, 0.1);
-  }
-
-  /* Navigation */
-  .nav-link {
-    color: #1f2937;
-  }
-
-  .nav-link:hover {
-    color: #4c5da8;
-  }
-
-  /* Buttons */
-  .button-primary, .bg-\[\#6c63ff\] {
-    background: linear-gradient(135deg, #4c5da8, #7367f0);
-    color: white;
-  }
-
-  /* Social icons */
-  .social-icon {
-    color: #1f2937;
-  }
-
-  .social-icon:hover {
-    color: #4c5da8;
-  }
-
-  /* Remove text shadows in light mode */
-  h1, h2, a, p, ul {
-    text-shadow: none;
-  }
-
-  /* Adjust hover effects */
-  .hover-card:hover {
-    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
-    transform: translateY(-5px);
-  }
-
-  /* Navbar specific styles */
-  .nav-link {
-    color: #1f2937;
-  }
-
-  .nav-link:hover {
-    color: #4c5da8;
-  }
-
-  /* Update nav background when scrolled */
-  .bg-gray-900\/95 {
-    background-color: rgba(255, 255, 255, 0.95);
-  }
-
-  /* Nav items in scrolled state */
-  .scrolled .nav-link {
-    color: #1f2937;
-  }
-
-  .scrolled .nav-link:hover {
-    color: #4c5da8;
-  }
-
-  /* Logo text in light mode */
-  .text-transparent {
-    background: linear-gradient(45deg, #4c5da8, #7367f0);
-    -webkit-background-clip: text;
-    background-clip: text;
-  }
-
-  /* Mobile menu in light mode */
-  .md\:hidden .bg-gray-900\/95 {
-    background-color: rgba(255, 255, 255, 0.95);
-  }
-
-  .md\:hidden .text-gray-300 {
-    color: #1f2937;
-  }
-
-  .md\:hidden .hover\:text-white:hover {
-    color: #4c5da8;
-  }
-
-  .md\:hidden .hover\:bg-gray-800:hover {
-    background-color: rgba(0, 0, 0, 0.05);
-  }
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
 }

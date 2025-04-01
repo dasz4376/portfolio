@@ -63,8 +63,11 @@ ${data.message}
   };
 
   const containerVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: { opacity: 1, y: 0, transition: { duration: 0.6 } }
+    hidden: { opacity: 0 },
+    visible: { 
+      opacity: 1,
+      transition: { duration: 0.4 }
+    }
   };
 
   const contactMethods = [
@@ -99,241 +102,178 @@ ${data.message}
       initial="hidden"
       animate="visible"
       variants={containerVariants}
-      className="min-h-screen pt-24 pb-12 px-4"
+      className="min-h-screen pt-24 pb-12 px-4 bg-transparent"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="glass-effect rounded-xl p-8">
+        <div className="glass-effect rounded-xl p-6">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="text-center mb-8"
+          >
+            <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
+              Get in Touch
+            </h2>
+            <p className="text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto">
+              Let's discuss how I can help with your next project
+            </p>
+          </motion.div>
+
           {/* Availability Badge */}
           <div className="flex justify-center mb-6">
             <motion.div
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              className={`px-4 py-2 rounded-full ${
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              className={`px-4 py-2 rounded-lg ${
                 availability === 'Available' 
-                  ? 'bg-green-500/20 text-green-400'
+                  ? 'bg-green-500/10 text-green-400 border border-green-500/20'
                   : availability.includes('delayed')
-                    ? 'bg-yellow-500/20 text-yellow-400'
-                    : 'bg-red-500/20 text-red-400'
+                    ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
+                    : 'bg-red-500/10 text-red-400 border border-red-500/20'
               } flex items-center space-x-2`}
             >
-              <span className="relative flex h-3 w-3">
+              <span className="relative flex h-2 w-2">
                 <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
                   availability === 'Available' ? 'bg-green-400' : 'bg-yellow-400'
                 }`}></span>
-                <span className={`relative inline-flex rounded-full h-3 w-3 ${
+                <span className={`relative inline-flex rounded-full h-2 w-2 ${
                   availability === 'Available' ? 'bg-green-500' : 'bg-yellow-500'
                 }`}></span>
               </span>
-              <span>{availability}</span>
+              <span className="text-sm font-medium">{availability}</span>
             </motion.div>
           </div>
 
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            className="grid md:grid-cols-2 gap-12"
+          <motion.div 
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            className="grid md:grid-cols-2 gap-8"
           >
             {/* Contact Methods */}
-            <div className="space-y-8">
-              <h2 className="text-2xl font-semibold text-white mb-6">
+            <div className="space-y-4">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Contact Information
-              </h2>
+              </h3>
               
-              <div className="grid gap-6">
+              <div className="grid gap-4">
                 {contactMethods.map((method, index) => (
                   <motion.a
                     key={index}
                     href={method.link}
                     target={method.icon.includes('fa-') ? "_blank" : undefined}
                     rel={method.icon.includes('fa-') ? "noopener noreferrer" : undefined}
-                    className="flex items-center p-4 rounded-lg bg-gray-800/50 hover:bg-gray-700/50 transition-all duration-300 transform hover:-translate-y-1"
-                    whileHover={{ scale: 1.02 }}
-                    whileTap={{ scale: 0.98 }}
+                    className="group flex items-center p-4 rounded-lg glass-effect hover:bg-primary/5 transition-all duration-300"
+                    whileHover={{ scale: 1.01 }}
+                    whileTap={{ scale: 0.99 }}
                   >
-                    <i className={`${method.icon} text-2xl text-primary mr-4`}></i>
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-3 group-hover:bg-primary/20 transition-colors duration-300">
+                      <i className={`${method.icon} text-xl text-primary`}></i>
+                    </div>
                     <div>
-                      <h3 className="text-white font-semibold">{method.title}</h3>
-                      <p className="text-gray-300">{method.value}</p>
+                      <h4 className="text-gray-900 dark:text-white font-medium">{method.title}</h4>
+                      <p className="text-gray-700 dark:text-gray-300 text-sm">{method.value}</p>
                     </div>
                   </motion.a>
                 ))}
               </div>
             </div>
 
-            {/* Enhanced Contact Form */}
-            <div className="bg-gray-800/30 p-6 rounded-xl">
-              <h2 className="text-2xl font-semibold text-white mb-6">
+            {/* Contact Form */}
+            <div className="space-y-6">
+              <h3 className="text-xl font-semibold text-gray-900 dark:text-white mb-4">
                 Send a Message
-              </h2>
+              </h3>
 
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
-                <div>
-                  <input
-                    {...register('name', { required: 'Name is required' })}
-                    type="text"
-                    placeholder="Your Name"
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                  {errors.name && (
-                    <p className="text-red-400 text-sm mt-1">{errors.name.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <input
-                    {...register('email', { 
-                      required: 'Email is required',
-                      pattern: {
-                        value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
-                        message: 'Invalid email address'
-                      }
-                    })}
-                    type="email"
-                    placeholder="Your Email"
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                  {errors.email && (
-                    <p className="text-red-400 text-sm mt-1">{errors.email.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <input
-                    {...register('subject', { required: 'Subject is required' })}
-                    type="text"
-                    placeholder="Subject"
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                  {errors.subject && (
-                    <p className="text-red-400 text-sm mt-1">{errors.subject.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <textarea
-                    {...register('message', { required: 'Message is required' })}
-                    placeholder="Your Message"
-                    rows={5}
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                  {errors.message && (
-                    <p className="text-red-400 text-sm mt-1">{errors.message.message}</p>
-                  )}
-                </div>
-
-                <div>
-                  <input
-                    {...register('phone')}
-                    type="tel"
-                    placeholder="Phone (optional)"
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-
-                <div>
-                  <input
-                    {...register('company')}
-                    type="text"
-                    placeholder="Company (optional)"
-                    className="w-full px-4 py-3 rounded-lg bg-gray-700/50 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-primary"
-                  />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="text-white">Preferred Contact Method</label>
-                  <div className="flex space-x-4">
-                    <label className="flex items-center space-x-2">
-                      <input
-                        {...register('preferredContact')}
-                        type="radio"
-                        value="email"
-                        defaultChecked
-                        className="text-primary focus:ring-primary"
-                      />
-                      <span className="text-gray-300">Email</span>
-                    </label>
-                    <label className="flex items-center space-x-2">
-                      <input
-                        {...register('preferredContact')}
-                        type="radio"
-                        value="phone"
-                        className="text-primary focus:ring-primary"
-                      />
-                      <span className="text-gray-300">Phone</span>
-                    </label>
+              <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-gray-900 dark:text-white text-sm font-medium mb-2">Name</label>
+                    <input
+                      type="text"
+                      id="name"
+                      {...register('name', { required: true })}
+                      className="w-full px-4 py-2 rounded-lg glass-effect text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="Your name"
+                    />
+                    {errors.name && <span className="text-red-500 text-sm">Name is required</span>}
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-gray-900 dark:text-white text-sm font-medium mb-2">Email</label>
+                    <input
+                      type="email"
+                      id="email"
+                      {...register('email', { required: true, pattern: /^\S+@\S+$/i })}
+                      className="w-full px-4 py-2 rounded-lg glass-effect text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                      placeholder="Your email"
+                    />
+                    {errors.email && <span className="text-red-500 text-sm">Valid email is required</span>}
                   </div>
                 </div>
 
-                <motion.button
+                <div>
+                  <label htmlFor="subject" className="block text-gray-900 dark:text-white text-sm font-medium mb-2">Subject</label>
+                  <input
+                    type="text"
+                    id="subject"
+                    {...register('subject', { required: true })}
+                    className="w-full px-4 py-2 rounded-lg glass-effect text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Message subject"
+                  />
+                  {errors.subject && <span className="text-red-500 text-sm">Subject is required</span>}
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-gray-900 dark:text-white text-sm font-medium mb-2">Message</label>
+                  <textarea
+                    id="message"
+                    {...register('message', { required: true })}
+                    rows={4}
+                    className="w-full px-4 py-2 rounded-lg glass-effect text-gray-900 dark:text-white placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-primary"
+                    placeholder="Your message"
+                  ></textarea>
+                  {errors.message && <span className="text-red-500 text-sm">Message is required</span>}
+                </div>
+
+                <button
                   type="submit"
                   disabled={isSubmitting}
-                  className="w-full px-6 py-3 rounded-lg bg-primary text-white font-semibold hover:bg-primary/90 transition-colors duration-300 disabled:opacity-50"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
+                  className="w-full px-6 py-3 bg-primary text-white font-medium rounded-lg hover:bg-primary/90 transition-all duration-300 disabled:opacity-50"
                 >
                   {isSubmitting ? (
                     <span className="flex items-center justify-center">
-                      <i className="fas fa-spinner fa-spin mr-2"></i>
+                      <i className="fas fa-circle-notch fa-spin mr-2"></i>
                       Sending...
                     </span>
                   ) : (
-                    'Send Message'
+                    <span className="flex items-center justify-center">
+                      <i className="fas fa-paper-plane mr-2"></i>
+                      Send Message
+                    </span>
                   )}
-                </motion.button>
-
-                {submitStatus === 'success' && (
-                  <p className="text-green-400 text-center mt-4">
-                    Message sent successfully!
-                  </p>
-                )}
-
-                {submitStatus === 'error' && (
-                  <p className="text-red-400 text-center mt-4">
-                    Failed to send message. Please try again.
-                  </p>
-                )}
+                </button>
               </form>
+
+              {/* Success Message */}
+              <AnimatePresence>
+                {showSuccessModal && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    exit={{ opacity: 0 }}
+                    className="bg-green-500/10 text-green-400 p-4 rounded-lg border border-green-500/20"
+                  >
+                    <p className="flex items-center">
+                      <i className="fas fa-check-circle mr-2"></i>
+                      Message sent successfully!
+                    </p>
+                  </motion.div>
+                )}
+              </AnimatePresence>
             </div>
           </motion.div>
         </div>
       </div>
-
-      {/* Success Modal */}
-      <AnimatePresence>
-        {showSuccessModal && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 bg-black/50 flex items-center justify-center z-50"
-            onClick={() => setShowSuccessModal(false)}
-          >
-            <motion.div
-              initial={{ scale: 0.5 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0.5 }}
-              className="bg-gray-800 p-6 rounded-xl max-w-md mx-4"
-              onClick={e => e.stopPropagation()}
-            >
-              <div className="text-center">
-                <div className="w-16 h-16 bg-green-500/20 rounded-full flex items-center justify-center mx-auto mb-4">
-                  <i className="fas fa-check text-2xl text-green-500"></i>
-                </div>
-                <h3 className="text-xl font-bold text-white mb-2">Message Sent!</h3>
-                <p className="text-gray-300 mb-4">
-                  Thank you for reaching out. I'll get back to you as soon as possible.
-                </p>
-                <button
-                  onClick={() => setShowSuccessModal(false)}
-                  className="px-4 py-2 bg-primary text-white rounded-lg hover:bg-primary/90 transition-colors"
-                >
-                  Close
-                </button>
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </motion.section>
   );
 };

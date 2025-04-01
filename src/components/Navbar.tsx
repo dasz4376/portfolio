@@ -1,14 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useTheme } from '../context/ThemeContext';
 
 const Navbar: React.FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
   const location = useLocation();
-
-  const { isDarkMode, toggleTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -19,59 +16,30 @@ const Navbar: React.FC = () => {
   }, []);
 
   const navItems = [
-    { path: '/home', label: 'Home' },
-    { path: '/about', label: 'About' },
-    { path: '/projects', label: 'Projects' },
-    { path: '/contact', label: 'Contact' }
+    { path: '/home', label: 'Home', icon: 'fas fa-home' },
+    { path: '/about', label: 'About', icon: 'fas fa-user' },
+    { path: '/projects', label: 'Projects', icon: 'fas fa-code' },
+    { path: '/contact', label: 'Contact', icon: 'fas fa-envelope' }
   ];
-
-  const ThemeToggle = () => (
-    <motion.button
-      whileTap={{ scale: 0.95 }}
-      onClick={toggleTheme}
-      className={`p-2 rounded-lg transition-colors duration-200 ${
-        isDarkMode 
-          ? 'bg-gray-800 text-yellow-400 hover:bg-gray-700' 
-          : 'bg-gray-200 text-gray-700 hover:bg-gray-300'
-      }`}
-      aria-label="Toggle Theme"
-    >
-      {isDarkMode ? (
-        <motion.i
-          initial={{ rotate: -45 }}
-          animate={{ rotate: 0 }}
-          className="fas fa-sun text-xl"
-        />
-      ) : (
-        <motion.i
-          initial={{ rotate: 45 }}
-          animate={{ rotate: 0 }}
-          className="fas fa-moon text-xl"
-        />
-      )}
-    </motion.button>
-  );
 
   return (
     <motion.nav
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled 
-          ? isDarkMode 
-            ? 'bg-gray-900/95 backdrop-blur-xl shadow-lg' 
-            : 'bg-white/95 backdrop-blur-xl shadow-lg border-b border-gray-200'
-          : 'bg-transparent'
+        scrolled ? 'glass-effect shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20 items-center">
+          {/* Logo */}
           <motion.div
             whileHover={{ scale: 1.1 }}
             whileTap={{ scale: 0.95 }}
+            className="relative group"
           >
             <Link to="/home" className="flex items-center space-x-2">
-              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-info bg-clip-text text-transparent">
+              <span className="text-2xl font-bold bg-gradient-to-r from-primary to-info bg-clip-text text-transparent group-hover:opacity-80 transition-opacity">
                 MD
               </span>
             </Link>
@@ -82,95 +50,85 @@ const Navbar: React.FC = () => {
             {navItems.map((item) => (
               <motion.div
                 key={item.path}
-                whileHover={{ y: -2 }}
-                whileTap={{ y: 0 }}
+                whileHover={location.pathname !== item.path ? { y: -2 } : {}}
+                whileTap={location.pathname !== item.path ? { y: 0 } : {}}
+                className="relative"
               >
                 <Link
                   to={item.path}
-                  className={`nav-link relative px-3 py-2 text-sm font-medium ${
+                  className={`nav-link flex items-center space-x-2 px-3 py-2 text-sm font-medium ${
                     location.pathname === item.path
-                      ? 'text-primary'
-                      : 'text-gray-300 hover:text-white'
+                      ? 'text-primary pointer-events-none'
+                      : 'text-gray-300 hover:text-white transition-colors duration-200'
                   }`}
                 >
-                  {item.label}
-                  {location.pathname === item.path && (
-                    <motion.div
-                      layoutId="underline"
-                      className="absolute bottom-0 left-0 w-full h-0.5 bg-primary"
-                    />
-                  )}
+                  <i className={`${item.icon} text-base`}></i>
+                  <span>{item.label}</span>
                 </Link>
+                <motion.div
+                  layoutId="activeUnderline"
+                  className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-info"
+                  initial={false}
+                  animate={{ opacity: location.pathname === item.path ? 1 : 0 }}
+                  transition={{ duration: 0.2 }}
+                />
+                {location.pathname !== item.path && (
+                  <motion.div
+                    className="absolute -bottom-1 left-0 w-full h-0.5 bg-gradient-to-r from-primary to-info origin-left"
+                    initial={{ scaleX: 0 }}
+                    whileHover={{ scaleX: 1 }}
+                    transition={{ duration: 0.2 }}
+                  />
+                )}
               </motion.div>
             ))}
-            <ThemeToggle />
           </div>
 
-          {/* Mobile Menu Button */}
-          <motion.button
-            whileTap={{ scale: 0.95 }}
-            className="md:hidden text-gray-300 hover:text-white"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
+          {/* Mobile menu button */}
+          <div className="md:hidden">
+            <motion.button
+              whileHover={{ scale: 1.1 }}
+              whileTap={{ scale: 0.9 }}
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+              className="text-gray-300 hover:text-white p-2 transition-colors duration-200"
             >
-              {isMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
-            </svg>
-          </motion.button>
+              <i className={`fas fa-${isMenuOpen ? 'times' : 'bars'} text-xl`}></i>
+            </motion.button>
+          </div>
         </div>
       </div>
 
-      {/* Mobile Menu */}
+      {/* Mobile menu */}
       <AnimatePresence>
         {isMenuOpen && (
           <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            exit={{ opacity: 0, y: -20 }}
-            className="md:hidden"
+            initial={{ opacity: 0, height: 0 }}
+            animate={{ opacity: 1, height: 'auto' }}
+            exit={{ opacity: 0, height: 0 }}
+            className="md:hidden glass-effect"
           >
-            <div className="px-2 pt-2 pb-3 space-y-1 bg-gray-900/95 backdrop-blur-xl">
+            <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
                 <Link
                   key={item.path}
                   to={item.path}
-                  className={`block px-3 py-2 rounded-md text-base font-medium ${
+                  className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                     location.pathname === item.path
-                      ? 'text-primary bg-gray-800'
-                      : 'text-gray-300 hover:text-white hover:bg-gray-800'
+                      ? 'bg-primary/10 text-primary'
+                      : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                   }`}
                   onClick={() => setIsMenuOpen(false)}
                 >
-                  {item.label}
+                  <i className={`${item.icon} text-lg`}></i>
+                  <span>{item.label}</span>
                 </Link>
               ))}
-              <div className="px-3 py-2">
-                <ThemeToggle />
-              </div>
             </div>
           </motion.div>
         )}
       </AnimatePresence>
     </motion.nav>
   );
-};
+}
 
 export default Navbar;
