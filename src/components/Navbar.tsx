@@ -27,7 +27,7 @@ const Navbar: React.FC = () => {
       initial={{ y: -100 }}
       animate={{ y: 0 }}
       className={`fixed w-full z-50 transition-all duration-300 ${
-        scrolled ? 'glass-effect shadow-lg' : 'bg-transparent'
+        scrolled ? 'bg-bg shadow-lg' : 'bg-transparent'
       }`}
     >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -105,7 +105,7 @@ const Navbar: React.FC = () => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="md:hidden glass-effect"
+            className="md:hidden bg-bg"
           >
             <div className="px-2 pt-2 pb-3 space-y-1">
               {navItems.map((item) => (
@@ -114,7 +114,7 @@ const Navbar: React.FC = () => {
                   to={item.path}
                   className={`flex items-center space-x-3 px-4 py-3 rounded-lg text-base font-medium transition-all duration-200 ${
                     location.pathname === item.path
-                      ? 'bg-primary/10 text-primary'
+                      ? 'bg-fore text-white'
                       : 'text-gray-300 hover:text-white hover:bg-gray-800/50'
                   }`}
                   onClick={() => setIsMenuOpen(false)}

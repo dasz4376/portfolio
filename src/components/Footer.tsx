@@ -94,22 +94,6 @@ const Footer: React.FC = () => {
             <p className="text-sm text-gray-300">
               &copy; {currentYear} Matthew Darabasz. All rights reserved.
             </p>
-            <div className="flex space-x-6 text-sm">
-              <motion.a 
-                href="#" 
-                className="text-gray-300 hover:text-primary transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-              >
-                Privacy Policy
-              </motion.a>
-              <motion.a 
-                href="#" 
-                className="text-gray-300 hover:text-primary transition-colors duration-300"
-                whileHover={{ scale: 1.05 }}
-              >
-                Terms of Service
-              </motion.a>
-            </div>
           </div>
         </div>
       </div>

@@ -379,13 +379,14 @@ const Home: React.FC = () => {
                 <i className="fas fa-paper-plane"></i>
                 Get in Touch
               </Link>
-              <Link
-                to="/projects"
-                className="px-8 py-4 rounded-lg font-bold text-white transition-transform duration-300 hover:-translate-y-1 bg-gradient-to-r from-purple to-info flex items-center justify-center gap-2"
+              <a
+                href="/Matthew R. Darabasz Resume.pdf"
+                download="Matthew R. Darabasz Resume.pdf"
+                className="px-8 py-4 rounded-lg font-bold text-white transition-transform duration-300 hover:-translate-y-1 bg-gradient-to-r from-purple to-primary flex items-center justify-center gap-2"
               >
                 <i className="fas fa-folder-open"></i>
-                View All Projects
-              </Link>
+                Download Resume
+              </a>
             </div>
           </div>
         </div>

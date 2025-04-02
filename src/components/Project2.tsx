@@ -120,24 +120,6 @@ const Project2: React.FC = () => {
                   </div>
                 </div>
               </div>
-
-              <div>
-                <h3 className="text-xl font-bold dark:text-white text-gray-900 mb-3">Project Links</h3>
-                <div className="space-y-3">
-                  <a
-                    href="https://paragonwellness.org"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-center p-4 rounded-lg glass-effect hover:bg-primary/5 transition-all duration-300 group"
-                  >
-                    <i className="fas fa-globe text-xl text-primary mr-3"></i>
-                    <div>
-                      <h4 className="dark:text-white text-gray-900 font-medium">Live Website</h4>
-                      <p className="dark:text-gray-300 text-gray-600 text-sm">Visit the website</p>
-                    </div>
-                  </a>
-                </div>
-              </div>
             </motion.div>
           </div>
 

@@ -20,17 +20,7 @@ const Contact: React.FC = () => {
   const [availability, setAvailability] = useState<string>('Available');
 
   // Simulate real-time availability status
-  useEffect(() => {
-    const now = new Date();
-    const hour = now.getHours();
-    if (hour >= 9 && hour < 17) {
-      setAvailability('Available');
-    } else if (hour >= 17 && hour < 22) {
-      setAvailability('Available with delayed response');
-    } else {
-      setAvailability('Away - will respond within 24 hours');
-    }
-  }, []);
+
 
   const onSubmit = async (data: FormData) => {
     setIsSubmitting(true);
@@ -120,31 +110,6 @@ ${data.message}
             </p>
           </motion.div>
 
-          {/* Availability Badge */}
-          <div className="flex justify-center mb-6">
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              className={`px-4 py-2 rounded-lg ${
-                availability === 'Available' 
-                  ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                  : availability.includes('delayed')
-                    ? 'bg-yellow-500/10 text-yellow-400 border border-yellow-500/20'
-                    : 'bg-red-500/10 text-red-400 border border-red-500/20'
-              } flex items-center space-x-2`}
-            >
-              <span className="relative flex h-2 w-2">
-                <span className={`animate-ping absolute inline-flex h-full w-full rounded-full opacity-75 ${
-                  availability === 'Available' ? 'bg-green-400' : 'bg-yellow-400'
-                }`}></span>
-                <span className={`relative inline-flex rounded-full h-2 w-2 ${
-                  availability === 'Available' ? 'bg-green-500' : 'bg-yellow-500'
-                }`}></span>
-              </span>
-              <span className="text-sm font-medium">{availability}</span>
-            </motion.div>
-          </div>
-
           <motion.div 
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
@@ -167,7 +132,7 @@ ${data.message}
                     whileHover={{ scale: 1.01 }}
                     whileTap={{ scale: 0.99 }}
                   >
-                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-3 group-hover:bg-primary/20 transition-colors duration-300">
+                    <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mr-3 group-hover:bg-bg transition-colors duration-300">
                       <i className={`${method.icon} text-xl text-primary`}></i>
                     </div>
                     <div>
