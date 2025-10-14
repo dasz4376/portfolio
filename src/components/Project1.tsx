@@ -32,16 +32,14 @@ const Project1: React.FC = () => {
       className="min-h-screen pt-24 pb-12 px-4 bg-transparent"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="glass-effect rounded-xl p-6">
+        <div className="card card-hover p-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center mb-8"
           >
-            <h2 className="text-4xl font-bold dark:text-white text-gray-900 mb-4">
-              FiveM Vehicle Tuning Interface
-            </h2>
+            <h2 className="section-title">FiveM Vehicle Tuning Interface</h2>
             <p className="dark:text-gray-300 text-gray-600 text-lg max-w-2xl mx-auto">
               A custom UI for vehicle tuning in FiveM servers
             </p>

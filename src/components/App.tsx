@@ -8,7 +8,7 @@ import Home from './Home';
 import Project1 from './Project1';
 import Project2 from './Project2';
 import Project3 from './Project3';
-import ParagonProject from './ParagonProject';
+import SymmetryEAPProject from './SymmetryEAPProject';
 import Camber from './Camber';
 import Presets from './Presets';
 import Contact from './Contact';
@@ -34,7 +34,7 @@ const App: React.FC = () => {
             <Route path="/project1" element={<Project1 />} />
             <Route path="/project2" element={<Project2 />} />
             <Route path="/project3" element={<Project3 />} />
-            <Route path="/paragon-project" element={<ParagonProject />} />
+            <Route path="/symmetry-eap" element={<SymmetryEAPProject />} />
             <Route path="/camber" element={<Camber />} />
             <Route path="/presetstab" element={<Presets />} />
             <Route path="/contact" element={<Contact />} />

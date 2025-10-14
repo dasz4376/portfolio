@@ -2,7 +2,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import paragonPreview from '../assets/paragon-preview.png';
+import symmetryPreview from '../assets/symmetry-preview.png';
 
 const Project2: React.FC = () => {
   const containerVariants = {
@@ -41,10 +41,10 @@ const Project2: React.FC = () => {
             className="text-center mb-8"
           >
             <h2 className="text-4xl font-bold dark:text-white text-gray-900 mb-4">
-              Paragon Website
+              Symmetry EAP Website
             </h2>
             <p className="dark:text-gray-300 text-gray-600 text-lg max-w-2xl mx-auto">
-              A modern, responsive website built with React and TypeScript
+              Public site for Symmetry EAP built with React, TypeScript, Tailwind, and Framer Motion
             </p>
           </motion.div>
 
@@ -55,8 +55,8 @@ const Project2: React.FC = () => {
           >
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/30 z-10"></div>
             <img 
-              src={paragonPreview}
-              alt="Paragon Website Preview" 
+              src={symmetryPreview}
+              alt="Symmetry Website Preview" 
               className="w-full h-full object-cover"
             />
           </motion.div>
@@ -68,7 +68,7 @@ const Project2: React.FC = () => {
               <div>
                 <h3 className="text-xl font-bold dark:text-white text-gray-900 mb-3">Project Overview</h3>
                 <p className="dark:text-gray-300 text-gray-600 text-base leading-relaxed">
-                  A modern website built for Paragon, featuring a clean and professional design. The site showcases services, features, and information in an engaging and user-friendly way.
+                  A modern website built for Symmetry EAP, featuring a clean and professional design. The site showcases services, features, and information in an engaging and user-friendly way.
                 </p>
               </div>
 
@@ -118,6 +118,16 @@ const Project2: React.FC = () => {
                       <li>ESLint</li>
                     </ul>
                   </div>
+                </div>
+                <div className="mt-6">
+                  <a
+                    href="https://www.symmetryeap.org/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-block px-5 py-3 bg-primary/80 text-white rounded-lg hover:bg-primary transition-all duration-300"
+                  >
+                    Visit Live Site
+                  </a>
                 </div>
               </div>
             </motion.div>

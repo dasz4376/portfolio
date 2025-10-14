@@ -1,7 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Link } from 'react-router-dom';
-import paragonPreview from '../assets/paragon-preview.png';
+import symmetryPreview from '../assets/symmetry-preview.png';
 
 const PortfolioProject: React.FC = () => {
   const containerVariants = {
@@ -32,7 +32,7 @@ const PortfolioProject: React.FC = () => {
       className="min-h-screen pt-24 pb-12 px-4 bg-gradient-to-b from-slate-900/95 to-slate-800/90"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="bg-slate-800/30 rounded-xl p-6">
+        <div className="card card-hover p-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0 }}
@@ -48,13 +48,10 @@ const PortfolioProject: React.FC = () => {
           </motion.div>
 
           {/* Project Image */}
-          <motion.div
-            variants={itemVariants}
-            className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8"
-          >
+          <motion.div variants={itemVariants} className="relative w-full h-[400px] image-zoom mb-8">
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/30 z-10"></div>
             <img 
-              src={paragonPreview}
+              src={symmetryPreview}
               alt="Portfolio Website Preview" 
               className="w-full h-full object-cover"
             />

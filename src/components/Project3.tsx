@@ -32,26 +32,21 @@ const Project3: React.FC = () => {
       className="min-h-screen pt-24 pb-12 px-4 bg-transparent"
     >
       <div className="max-w-6xl mx-auto">
-        <div className="glass-effect rounded-xl p-6">
+        <div className="card card-hover p-6">
           {/* Header */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             className="text-center mb-8"
           >
-            <h2 className="text-4xl font-bold dark:text-white text-gray-900 mb-4">
-              Project 3
-            </h2>
+            <h2 className="section-title">Project 3</h2>
             <p className="dark:text-gray-300 text-gray-600 text-lg max-w-2xl mx-auto">
               Project 3 description
             </p>
           </motion.div>
 
           {/* Project Image */}
-          <motion.div
-            variants={itemVariants}
-            className="relative w-full h-[400px] rounded-lg overflow-hidden mb-8"
-          >
+          <motion.div variants={itemVariants} className="relative w-full h-[400px] image-zoom mb-8">
             <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/30 z-10"></div>
             <img 
               src="https://via.placeholder.com/300"

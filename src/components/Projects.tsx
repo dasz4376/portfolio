@@ -1,134 +1,128 @@
-// Projects.jsx
 import React from 'react';
 import { Link } from 'react-router-dom';
-import tunermenucamber from './tuner-menu-camber.png';
-import paragonPreview from '../assets/paragon-preview.png';
 import { motion } from 'framer-motion';
+import symmetryPreview from '../assets/symmetry-preview.png';
+import tunermenucamber from './tuner-menu-camber.png';
 
 const Projects: React.FC = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.4
-      }
+  const projects = [
+    {
+      title: 'Symmetry EAP Website',
+      description: 'Healthcare-focused public site with modern UX and accessibility features',
+      image: symmetryPreview,
+      tags: ['React', 'TypeScript', 'Tailwind'],
+      link: '/project2',
+      external: 'https://www.symmetryeap.org/'
+    },
+    {
+      title: 'FiveM Vehicle Tuning',
+      description: 'Custom UI for vehicle modification in FiveM gaming servers',
+      image: tunermenucamber,
+      tags: ['JavaScript', 'Lua', 'UI/UX'],
+      link: '/project1'
     }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
+  ];
 
   return (
-    <motion.section
-      initial="hidden"
-      animate="visible"
-      variants={containerVariants}
-      className="min-h-screen pt-24 pb-12 px-4 bg-transparent"
-    >
-      <div className="max-w-6xl mx-auto">
-        {/* Header Section */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            Featured Projects
-          </h2>
-          <p className="text-gray-700 dark:text-gray-300 text-lg max-w-2xl mx-auto">
-            Explore my portfolio of web applications and development projects
-          </p>
-        </motion.div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-16">
-          {/* Paragon Website Project */}
-          <motion.div 
-            variants={itemVariants} 
-            className="group glass-effect p-6 rounded-xl hover:bg-primary/5 transition-all duration-300"
+    <div className="min-h-screen pt-32 pb-20">
+      <section className="section">
+        {/* Header */}
+        <div className="text-center mb-16">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="space-y-4"
           >
-            <Link to="/project2" className="block">
-              <div className="flex justify-center mb-6">
-                <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/30 z-10"></div>
-                  <img 
-                    src={paragonPreview}
-                    alt="Paragon Website" 
-                    className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]" 
-                  />
-                </div>
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">Paragon Website</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 text-base">A modern, responsive website built with React and TypeScript</p>
-                <span 
-                  className="inline-block px-6 py-3 bg-primary/80 text-white font-medium rounded-lg hover:bg-primary transition-all duration-300"
-                >
-                  View Project
-                </span>
-              </div>
-            </Link>
-          </motion.div>
-
-          {/* FiveM Project */}
-          <motion.div 
-            variants={itemVariants} 
-            className="group glass-effect p-6 rounded-xl hover:bg-primary/5 transition-all duration-300"
-          >
-            <Link to="/project1" className="block">
-              <div className="flex justify-center mb-6">
-                <div className="relative w-full h-64 rounded-lg overflow-hidden">
-                  <div className="absolute inset-0 bg-gradient-to-br from-slate-900/30 to-slate-800/30 z-10"></div>
-                  <img 
-                    src={tunermenucamber}
-                    alt="FiveM Project" 
-                    className="w-full h-full object-cover rounded-lg transition-transform duration-300 group-hover:scale-[1.02]" 
-                  />
-                </div>
-              </div>
-              <div className="text-center">
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-3">FiveM Vehicle Tuning</h3>
-                <p className="text-gray-700 dark:text-gray-300 mb-4 text-base">A custom UI for vehicle tuning in FiveM servers</p>
-                <span 
-                  className="inline-block px-6 py-3 bg-primary/80 text-white font-medium rounded-lg hover:bg-primary transition-all duration-300"
-                >
-                  View Project
-                </span>
-              </div>
-            </Link>
+            <h1 className="display-2">Featured Projects</h1>
+            <p className="body-lg max-w-2xl mx-auto">
+              A selection of my recent work spanning web development, healthcare tech, and interactive applications
+            </p>
           </motion.div>
         </div>
 
-        {/* Portfolio Repository Link */}
-        <motion.div 
+        {/* Projects Grid - Equal sized cards */}
+        <div className="grid md:grid-cols-2 gap-8 max-w-6xl mx-auto">
+          {projects.map((project, i) => (
+            <motion.div
+              key={i}
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: i * 0.2 }}
+              className="card card-hover card-interactive group flex flex-col"
+            >
+              {/* Image */}
+              <div className="image-container mb-6 h-64 relative z-10">
+                <img
+                  src={project.image}
+                  alt={project.title}
+                  className="w-full h-full object-cover"
+                />
+                <div className="image-overlay flex items-end p-6">
+                  <div className="text-white">
+                    <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+                    <p className="text-sm opacity-90">{project.description}</p>
+                  </div>
+                </div>
+              </div>
+
+              {/* Content */}
+              <div className="space-y-4 flex-1 flex flex-col relative z-10">
+                <div className="flex flex-wrap gap-2">
+                  {project.tags.map((tag, j) => (
+                    <span key={j} className="badge">
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+
+                <div className="flex gap-3 mt-auto">
+                  <Link to={project.link} className="btn btn-secondary text-sm">
+                    <i className="fas fa-arrow-right"></i>
+                    View Details
+                  </Link>
+                  {project.external && (
+                    <a
+                      href={project.external}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="btn btn-ghost text-sm"
+                    >
+                      <i className="fas fa-external-link-alt"></i>
+                      Live Site
+                    </a>
+                  )}
+                </div>
+              </div>
+            </motion.div>
+          ))}
+        </div>
+
+        {/* GitHub CTA */}
+        <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
-          transition={{ delay: 0.3 }}
-          className="text-center border-t border-slate-700/20 pt-8"
+          transition={{ delay: 0.6 }}
+          className="mt-16 text-center"
         >
-          <p className="text-gray-700 dark:text-gray-300 font-medium mb-4">
-            View the repository for this Website Portfolio
-          </p>
-          <a 
-            href="https://github.com/dasz4376/portfolio" 
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-block px-6 py-3 bg-primary/80 text-white font-medium rounded-lg hover:bg-primary transition-all duration-300"
-          >
-            View Repository
-          </a>
+          <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
+            <h3 className="heading-2 mb-4">More on GitHub</h3>
+            <p className="body mb-6">
+              Check out my other projects and contributions on GitHub
+            </p>
+            <a
+              href="https://github.com/dasz4376"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-primary"
+            >
+              <i className="fab fa-github"></i>
+              Visit GitHub Profile
+            </a>
+          </div>
         </motion.div>
-      </div>
-    </motion.section>
+      </section>
+    </div>
   );
-}
+};
 
 export default Projects;

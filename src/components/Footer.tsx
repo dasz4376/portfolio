@@ -94,6 +94,9 @@ const Footer: React.FC = () => {
             <p className="text-sm text-gray-300">
               &copy; {currentYear} Matthew Darabasz. All rights reserved.
             </p>
+            <p className="text-sm text-gray-400">
+              Built with <span className="text-white">React</span>, <span className="text-white">TypeScript</span>, and <span className="text-white">Tailwind CSS</span>
+            </p>
           </div>
         </div>
       </div>
