@@ -4,50 +4,69 @@ import { motion } from 'framer-motion';
 const About: React.FC = () => {
   const experiences = [
     {
-      title: "Chief Technology Officer",
+      title: "Full-Stack Developer & Technical Lead",
       company: "Symmetry EAP",
-      location: "Philadelphia, PA",
-      period: "Sep 2024 - Present",
-      description: "Leading technology strategy and development for a healthcare organization",
+      location: "Philadelphia, PA (Early-stage Startup)",
+      period: "Feb 2025 - Present",
+      description: "Sole technical resource building all digital infrastructure for early-stage company",
       highlights: [
-        "Oversee full-cycle development projects",
-        "Manage IT infrastructure and security",
-        "Drive third-party platform integration"
+        "Built company website from scratch using React, TypeScript, and TailwindCSS with full responsive design",
+        "Developed custom management system with appointment scheduling, secure data storage, and compliance features",
+        "Implemented user authentication and authorization system with PostgreSQL database and encrypted data storage",
+        "Set up AWS infrastructure (EC2, S3, RDS) with automated backups and 99.9% uptime",
+        "Configured IT systems including workstations, security protocols, and communication systems",
+        "Deployed CI/CD pipeline using GitHub Actions reducing deployment time from hours to minutes"
+      ]
+    },
+    {
+      title: "Full-Stack Developer & IT Consultant",
+      company: "Paragon Wellness Center",
+      location: "Philadelphia, PA (Early-stage Startup)",
+      period: "Jun 2024 - Feb 2025",
+      description: "Initially contracted to build company website, role expanded to handle all technical operations as sole technical resource",
+      highlights: [
+        "Designed and developed company website from scratch using React with modern UI/UX best practices",
+        "Transitioned from contractor to technical lead as business grew and technology needs expanded",
+        "Managed IT infrastructure setup including workstations, software licensing, and security systems",
+        "Maintained and iterated on web platform based on user feedback and business requirements",
+        "Collaborated directly with leadership on technology strategy and vendor selection",
+        "Provided technical support and training to administrative team"
       ]
     },
     {
       title: "Full-Stack Developer",
-      company: "FiveM",
-      period: "Dec 2022 - Sep 2023",
-      description: "Developed custom gaming applications and user interfaces",
+      company: "FiveM Gaming Community",
+      location: "Remote",
+      period: "Dec 2022 - Jun 2024",
+      description: "Developed custom gaming applications and user interfaces for multiplayer servers as part of 3-person development team",
       highlights: [
-        "Built React applications with TailwindCSS",
-        "Conducted testing and quality assurance",
-        "Enhanced user experiences"
+        "Built custom UIs using React, JavaScript, and Lua for high-traffic multiplayer gaming servers",
+        "Built custom scripts using Lua for high-traffic gaming servers",
+        "Created real-time vehicle customization system with WebSocket connections and instant feedback",
+        "Optimized UI rendering performance reducing frame drops by 40% during high-load scenarios",
+        "Collaborated with team using Git, conducting code reviews and pair programming sessions",
+        "Conducted QA testing and bug fixes, improving system stability by 60%"
       ]
     }
   ];
 
   const skills = {
-    "Languages": ["Python", "TypeScript", "JavaScript", "C#", "SQL", "Lua"],
-    "Frontend": ["React", "TailwindCSS", "Framer Motion"],
-    "ML & AI": ["PyTorch", "TensorFlow", "OpenCV", "YOLO", "scikit-learn"],
-    "Tools": ["Git", "VS Code", "Jupyter", "Vercel"]
+    "Frontend": ["React", "TypeScript", "JavaScript", "TailwindCSS", "Framer Motion", "HTML5", "CSS3", "Responsive Design"],
+    "Backend": ["Node.js", "Express", "Python", "RESTful APIs", "WebSocket", "C#", "Lua"],
+    "Databases": ["PostgreSQL", "MongoDB", "SQL", "Database Design", "Query Optimization"],
+    "Cloud & DevOps": ["AWS (EC2, S3, RDS)", "Docker", "GitHub Actions", "CI/CD", "Linux", "Nginx"],
+    "ML & AI": ["PyTorch", "TensorFlow", "OpenCV", "YOLO", "Computer Vision"],
+    "Tools & Practices": ["Git", "VS Code", "Agile", "Code Review", "Testing", "Documentation"]
   };
 
   const education = [
     {
-      degree: "Bachelor of Science in Information Technology",
-      school: "Purdue University",
-      specialization: "Software Development using C#",
-      status: "Currently pursuing"
-    },
-    {
       degree: "Associate of Applied Science in Information Technology",
       school: "Purdue University",
-      specialization: "Software Development",
-      gpa: "3.5",
-      status: "Completed Fall 2023"
+      specialization: "Software Development Specialization",
+      gpa: "3.5 GPA",
+      status: "Completed Fall 2023",
+      coursework: ["Data Structures & Algorithms", "Object-Oriented Programming (C#)", "Database Design & SQL", "Software Engineering", "Web Application Development"]
     }
   ];
 
@@ -63,7 +82,9 @@ const About: React.FC = () => {
           >
             <h1 className="display-2">About Me</h1>
             <p className="body-lg max-w-2xl mx-auto">
-              Full-Stack Developer specializing in healthcare technology, web applications, and machine learning
+              Full-stack developer with 3 years building web applications from scratch. 
+              I've worked as the sole technical resource at three early-stage companies, 
+              developing websites, custom management systems, and cloud infrastructure.
             </p>
           </motion.div>
         </div>
@@ -132,7 +153,7 @@ const About: React.FC = () => {
         {/* Education */}
         <div>
           <h2 className="heading-1 mb-8">Education</h2>
-          <div className="grid md:grid-cols-2 gap-6">
+          <div className="max-w-2xl mx-auto">
             {education.map((edu, i) => (
               <motion.div
                 key={i}
@@ -144,10 +165,22 @@ const About: React.FC = () => {
                 <h3 className="heading-2 text-lg mb-2">{edu.degree}</h3>
                 <p className="body font-medium mb-1" style={{color: '#6366f1'}}>{edu.school}</p>
                 <p className="body-sm mb-3">{edu.specialization}</p>
-                <div className="flex items-center gap-3">
+                <div className="flex items-center gap-3 mb-3">
                   <span className="badge">{edu.status}</span>
-                  {edu.gpa && <span className="body-sm">GPA: {edu.gpa}</span>}
+                  {edu.gpa && <span className="body-sm">{edu.gpa}</span>}
                 </div>
+                {edu.coursework && (
+                  <div>
+                    <p className="body-sm font-medium mb-2">Key Coursework:</p>
+                    <div className="flex flex-wrap gap-2">
+                      {edu.coursework.map((course, j) => (
+                        <span key={j} className="text-xs px-2 py-1 rounded-full bg-primary/10 text-primary border border-primary/20">
+                          {course}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                )}
               </motion.div>
             ))}
           </div>

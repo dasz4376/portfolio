@@ -4,37 +4,39 @@ import { motion } from 'framer-motion';
 
 const Home: React.FC = () => {
   const skills = [
-    "React", "TypeScript", "Python", "Node.js", "TailwindCSS",
-    "PyTorch", "TensorFlow", "OpenCV", "C#", "SQL", "Git"
+    "React", "TypeScript", "JavaScript", "Node.js", "TailwindCSS",
+    "Python", "C#", "PostgreSQL", "MongoDB", "SQL",
+    "AWS", "Docker", "Git", "GitHub Actions", "REST APIs",
+    "PyTorch", "TensorFlow", "OpenCV", "Express", "HTML5", "CSS3"
   ];
 
   const stats = [
-    { value: '4+', label: 'Years Experience' },
-    { value: '20+', label: 'Projects' },
+    { value: '3', label: 'Years Professional' },
+    { value: '3', label: 'Complete Systems Built' },
     { value: '15+', label: 'Technologies' },
     { value: '100%', label: 'Commitment' }
   ];
 
   const expertise = [
     {
-      icon: 'fas fa-laptop-medical',
-      title: 'Healthcare Tech',
-      desc: 'HIPAA-compliant solutions for medical organizations'
+      icon: 'fas fa-laptop-code',
+      title: 'Full-Stack Development',
+      desc: 'React, TypeScript, Node.js - Building complete web applications from database to UI'
     },
     {
-      icon: 'fas fa-code',
-      title: 'Full-Stack Dev',
-      desc: 'Modern web applications with React & TypeScript'
+      icon: 'fas fa-database',
+      title: 'Database & Backend',
+      desc: 'PostgreSQL, RESTful APIs - Designing schemas and building secure, scalable backends'
     },
     {
-      icon: 'fas fa-robot',
-      title: 'ML & AI',
-      desc: 'Computer vision, object detection, and ML models'
+      icon: 'fas fa-shield-alt',
+      title: 'Secure Applications',
+      desc: 'Building data management systems with encryption, authentication, and compliance standards'
     },
     {
-      icon: 'fas fa-project-diagram',
-      title: 'Tech Leadership',
-      desc: 'Leading teams and architecting scalable systems'
+      icon: 'fas fa-rocket',
+      title: 'Startup Experience',
+      desc: 'Solo developer at early-stage companies - Comfortable wearing multiple hats and shipping fast'
     }
   ];
 
@@ -64,17 +66,19 @@ const Home: React.FC = () => {
               
               <div className="space-y-2">
                 <h2 className="heading-1">
-                  Chief Technology Officer
+                  Full-Stack Developer
                 </h2>
                 <p className="body-lg">
-                  Full-Stack Developer & ML Engineer
+                  React, TypeScript, Node.js & PostgreSQL
                 </p>
               </div>
 
               <p className="body max-w-xl">
-                Building innovative solutions at the intersection of healthcare technology, 
-                web development, and artificial intelligence. Passionate about creating 
-                impactful products that solve real-world problems.
+                Full-stack developer with 3 years building complete web applications from 
+                scratch. I've worked as the sole technical resource at early-stage startups, 
+                where I built public-facing websites, custom management systems, and cloud 
+                infrastructure. Passionate about writing clean, maintainable code and solving 
+                complex technical problems.
               </p>
             </div>
 

@@ -82,20 +82,41 @@ const Contact: React.FC = () => {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ delay: 0.6 }}
-          className="mt-16 text-center"
+          className="mt-16 space-y-6"
         >
           <div className="glass rounded-2xl p-8 max-w-2xl mx-auto">
             <h3 className="heading-2 mb-4">Open to Opportunities</h3>
             <p className="body mb-6">
-              I'm currently available for freelance projects, full-time positions, and consulting opportunities.
+              I'm actively seeking junior to mid-level full-stack developer roles where I can contribute 
+              to a team, learn from experienced developers, and focus on writing great code. Open to 
+              opportunities across all industries including tech, fintech, e-commerce, SaaS, and more.
             </p>
+            <div className="grid md:grid-cols-2 gap-4 mb-6 text-left">
+              <div>
+                <p className="body-sm font-semibold mb-2" style={{color: '#6366f1'}}>Looking for:</p>
+                <ul className="body-sm space-y-1">
+                  <li>• Full-Stack Developer roles</li>
+                  <li>• Frontend/Backend Engineer</li>
+                  <li>• Software Developer positions</li>
+                </ul>
+              </div>
+              <div>
+                <p className="body-sm font-semibold mb-2" style={{color: '#6366f1'}}>Availability:</p>
+                <ul className="body-sm space-y-1">
+                  <li>• Full-time/Part-time positions</li>
+                  <li>• Contract Positions</li>
+                  <li>• Remote or Philadelphia/South Jersey area</li>
+                  <li>• Can start with 2 weeks notice</li>
+                </ul>
+              </div>
+            </div>
             <a
               href="/Matthew R. Darabasz Resume.pdf"
               download
               className="btn btn-primary"
             >
               <i className="fas fa-download"></i>
-              Download Resume
+              Download Resume (Updated Nov 2024)
             </a>
           </div>
         </motion.div>
