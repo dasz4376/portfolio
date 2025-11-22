@@ -111,8 +111,8 @@ const Contact: React.FC = () => {
               </div>
             </div>
             <a
-              href="/Matthew R. Darabasz Resume.pdf"
-              download
+              href={`${process.env.PUBLIC_URL}/Matthew Darabasz Resume.pdf`}
+              download="Matthew Darabasz Resume.pdf"
               className="btn btn-primary"
             >
               <i className="fas fa-download"></i>

@@ -65,8 +65,8 @@ const Navbar: React.FC = () => {
               ))}
               {/* Resume Button - Desktop */}
               <a
-                href="/Matthew R. Darabasz Resume.pdf"
-                download="Matthew R. Darabasz Resume.pdf"
+                href={`${process.env.PUBLIC_URL}/Matthew Darabasz Resume.pdf`}
+                download="Matthew Darabasz Resume.pdf"
                 className="btn btn-primary text-sm ml-2"
               >
                 <i className="fas fa-download"></i>
@@ -125,8 +125,8 @@ const Navbar: React.FC = () => {
                         <div className="h-px bg-white/10 my-2"></div>
                         
                         <a
-                          href="/Matthew R. Darabasz Resume.pdf"
-                          download="Matthew R. Darabasz Resume.pdf"
+                          href={`${process.env.PUBLIC_URL}/Matthew Darabasz Resume.pdf`}
+                          download="Matthew Darabasz Resume.pdf"
                           className="flex items-center space-x-3 px-4 py-3 rounded-xl text-sm font-medium bg-gradient-to-r from-primary to-secondary text-white shadow-lg hover:shadow-xl transition-all"
                         >
                           <i className="fas fa-download w-5"></i>

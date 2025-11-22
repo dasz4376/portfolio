@@ -194,8 +194,8 @@ const Home: React.FC = () => {
               Start a Conversation
             </Link>
             <a
-              href="/Matthew R. Darabasz Resume.pdf"
-              download
+              href={`${process.env.PUBLIC_URL}/Matthew Darabasz Resume.pdf`}
+              download="Matthew Darabasz Resume.pdf"
               className="btn btn-ghost"
             >
               <i className="fas fa-download"></i>
